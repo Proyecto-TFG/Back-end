@@ -63,16 +63,17 @@ public class MySecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 //.csrf().disable()
+                //.httpBasic(withDefaults())
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/generate-token").permitAll()
-                        .requestMatchers("/api/usuarios").permitAll()
+                        .requestMatchers(HttpMethod.GET,"api/usuarios/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                        .anyRequest().authenticated().and())
-                .exceptionHandling(handling -> handling.authenticationEntryPoint(unauthorizeHandler))
+                        .anyRequest().authenticated())
+                .exceptionHandling(handling -> handling.authenticationEntryPoint(unauthorizeHandler).and())
                 .sessionManagement(management -> management
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                        .csrf().disable()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .csrf().disable()
         ;
         http.headers(headers -> headers.frameOptions().disable());
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

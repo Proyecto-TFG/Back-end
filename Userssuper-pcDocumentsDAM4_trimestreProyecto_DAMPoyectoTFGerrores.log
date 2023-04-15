@@ -1,7 +1,19 @@
-2023-04-15T00:52:20.621+02:00  INFO 3120 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-04-15T00:52:20.622+02:00  INFO 3120 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-04-15T00:52:20.624+02:00  INFO 3120 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-04-15T00:52:21.153+02:00  WARN 3120 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Failure while trying to resolve exception [org.springframework.http.converter.HttpMessageNotWritableException]
+2023-04-15T01:51:45.257+02:00  INFO 21764 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-15T01:51:45.279+02:00  INFO 21764 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-15T01:51:46.493+02:00  WARN 21764 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-15T01:51:47.178+02:00  INFO 21764 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@22cf1808, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7156f8cf, org.springframework.security.web.context.SecurityContextHolderFilter@74691677, org.springframework.security.web.header.HeaderWriterFilter@600b3bee, org.springframework.security.web.csrf.CsrfFilter@630bd5e7, org.springframework.security.web.authentication.logout.LogoutFilter@73753326, com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter@7e615c6a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1abd1a28, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5478597, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22349ad3, org.springframework.security.web.session.SessionManagementFilter@45a05350, org.springframework.security.web.access.ExceptionTranslationFilter@e21d73, org.springframework.security.web.access.intercept.AuthorizationFilter@ebbbe20]
+2023-04-15T01:51:47.193+02:00  WARN 21764 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T01:51:47.194+02:00  INFO 21764 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2023-04-15T01:51:47.195+02:00  WARN 21764 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T01:51:47.196+02:00  INFO 21764 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2023-04-15T01:51:47.196+02:00  WARN 21764 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T01:51:47.197+02:00  INFO 21764 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2023-04-15T01:51:47.544+02:00  INFO 21764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-15T01:51:47.555+02:00  INFO 21764 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Started PoyectoTfgApplication in 10.333 seconds (process running for 11.133)
+2023-04-15T01:51:51.840+02:00  INFO 21764 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-15T01:51:51.842+02:00  INFO 21764 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-15T01:51:51.844+02:00  INFO 21764 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-15T01:51:52.318+02:00  WARN 21764 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Failure while trying to resolve exception [org.springframework.http.converter.HttpMessageNotWritableException]
 
 java.lang.IllegalStateException: Cannot call sendError() after the response has been committed
 	at org.apache.catalina.connector.ResponseFacade.checkCommitted(ResponseFacade.java:504) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
@@ -48,11 +60,14 @@ java.lang.IllegalStateException: Cannot call sendError() after the response has 
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
-	at com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:60) ~[classes/:na]
+	at com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:61) ~[classes/:na]
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.2.jar:6.0.2]
@@ -102,7 +117,7 @@ java.lang.IllegalStateException: Cannot call sendError() after the response has 
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
 
-2023-04-15T00:52:21.196+02:00 ERROR 3120 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)] with root cause
+2023-04-15T01:51:52.359+02:00 ERROR 21764 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)] with root cause
 
 java.lang.StackOverflowError: null
 	at java.base/java.lang.ClassLoader.defineClass1(Native Method) ~[na:na]
@@ -117,9 +132,6 @@ java.lang.StackOverflowError: null
 	at com.fasterxml.jackson.databind.JsonMappingException.prependPath(JsonMappingException.java:455) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:792) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.14.2.jar:2.14.2]
-	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:733) ~[jackson-databind-2.14.2.jar:2.14.2]
-	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774) ~[jackson-databind-2.14.2.jar:2.14.2]
-	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serializeContents(CollectionSerializer.java:145) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:107) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.14.2.jar:2.14.2]
@@ -1129,8 +1141,11 @@ java.lang.StackOverflowError: null
 	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.14.2.jar:2.14.2]
 	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serializeContents(CollectionSerializer.java:145) ~[jackson-databind-2.14.2.jar:2.14.2]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:107) ~[jackson-databind-2.14.2.jar:2.14.2]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.14.2.jar:2.14.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:733) ~[jackson-databind-2.14.2.jar:2.14.2]
 
-2023-04-15T00:52:21.496+02:00 ERROR 3120 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] threw exception
+2023-04-15T01:51:52.635+02:00 ERROR 21764 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] threw exception
 
 org.springframework.security.access.AccessDeniedException: Access Denied
 	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:98) ~[spring-security-web-6.0.2.jar:6.0.2]
@@ -1151,6 +1166,8 @@ org.springframework.security.access.AccessDeniedException: Access Denied
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.7.jar:6.0.7]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.7.jar:6.0.7]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
@@ -1197,7 +1214,7 @@ org.springframework.security.access.AccessDeniedException: Access Denied
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
 
-2023-04-15T00:52:21.516+02:00 ERROR 3120 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2023-04-15T01:51:52.657+02:00 ERROR 21764 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 jakarta.servlet.ServletException: Unable to handle the Spring Security Exception because the response is already committed.
 	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:144) ~[spring-security-web-6.0.2.jar:6.0.2]
@@ -1216,6 +1233,8 @@ jakarta.servlet.ServletException: Unable to handle the Spring Security Exception
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.7.jar:6.0.7]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.7.jar:6.0.7]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
@@ -1265,5 +1284,177 @@ Caused by: org.springframework.security.access.AccessDeniedException: Access Den
 	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:98) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.2.jar:6.0.2]
 	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.0.2.jar:6.0.2]
-	... 60 common frames omitted
+	... 62 common frames omitted
 
+2023-04-15T02:00:14.229+02:00  INFO 16272 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Starting PoyectoTfgApplication using Java 17.0.6 with PID 16272 (C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG\target\classes started by super-pc in C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG)
+2023-04-15T02:00:14.237+02:00  INFO 16272 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-04-15T02:00:15.724+02:00  INFO 16272 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-15T02:00:15.965+02:00  INFO 16272 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 221 ms. Found 13 JPA repository interfaces.
+2023-04-15T02:00:17.463+02:00  INFO 16272 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-15T02:00:17.481+02:00  INFO 16272 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-15T02:00:17.482+02:00  INFO 16272 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-15T02:00:17.741+02:00  INFO 16272 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-15T02:00:17.743+02:00  INFO 16272 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3409 ms
+2023-04-15T02:00:18.138+02:00  INFO 16272 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-15T02:00:18.261+02:00  INFO 16272 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-04-15T02:00:18.851+02:00  INFO 16272 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-15T02:00:19.164+02:00  INFO 16272 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@36551e97
+2023-04-15T02:00:19.170+02:00  INFO 16272 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-15T02:00:19.209+02:00  INFO 16272 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-04-15T02:00:19.213+02:00  WARN 16272 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-04-15T02:00:21.442+02:00  INFO 16272 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-15T02:00:21.462+02:00  INFO 16272 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-15T02:00:22.590+02:00  WARN 16272 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-15T02:00:23.097+02:00  INFO 16272 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b55f0a6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3fc7abf6, org.springframework.security.web.context.SecurityContextHolderFilter@73753326, org.springframework.security.web.header.HeaderWriterFilter@4d359c69, org.springframework.security.web.csrf.CsrfFilter@55a5eea3, org.springframework.security.web.authentication.logout.LogoutFilter@6bbac73d, com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter@7e615c6a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2eb73a42, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@188b9a1e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1016b44e, org.springframework.security.web.session.SessionManagementFilter@565030b7, org.springframework.security.web.access.ExceptionTranslationFilter@260fffec, org.springframework.security.web.access.intercept.AuthorizationFilter@7ec75228]
+2023-04-15T02:00:23.102+02:00  WARN 16272 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:00:23.103+02:00  INFO 16272 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2023-04-15T02:00:23.103+02:00  WARN 16272 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:00:23.104+02:00  INFO 16272 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2023-04-15T02:00:23.104+02:00  WARN 16272 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:00:23.104+02:00  INFO 16272 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2023-04-15T02:00:23.504+02:00  INFO 16272 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-15T02:00:23.517+02:00  INFO 16272 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Started PoyectoTfgApplication in 10.2 seconds (process running for 10.987)
+2023-04-15T02:00:29.382+02:00  INFO 16272 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-15T02:00:29.383+02:00  INFO 16272 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-15T02:00:29.385+02:00  INFO 16272 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-15T02:00:48.686+02:00  INFO 15160 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Starting PoyectoTfgApplication using Java 17.0.6 with PID 15160 (C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG\target\classes started by super-pc in C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG)
+2023-04-15T02:00:48.693+02:00  INFO 15160 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-04-15T02:00:50.152+02:00  INFO 15160 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-15T02:00:50.399+02:00  INFO 15160 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 225 ms. Found 13 JPA repository interfaces.
+2023-04-15T02:00:51.883+02:00  INFO 15160 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-15T02:00:51.898+02:00  INFO 15160 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-15T02:00:51.899+02:00  INFO 15160 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-15T02:00:52.167+02:00  INFO 15160 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-15T02:00:52.169+02:00  INFO 15160 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3378 ms
+2023-04-15T02:00:52.513+02:00  INFO 15160 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-15T02:00:52.652+02:00  INFO 15160 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-04-15T02:00:53.247+02:00  INFO 15160 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-15T02:00:53.562+02:00  INFO 15160 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1cee2e10
+2023-04-15T02:00:53.566+02:00  INFO 15160 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-15T02:00:53.615+02:00  INFO 15160 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-04-15T02:00:53.619+02:00  WARN 15160 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-04-15T02:00:55.964+02:00  INFO 15160 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-15T02:00:55.988+02:00  INFO 15160 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-15T02:00:57.203+02:00  WARN 15160 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-15T02:00:57.838+02:00  INFO 15160 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@341c0dfc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e0b68e5, org.springframework.security.web.context.SecurityContextHolderFilter@28f6a008, org.springframework.security.web.header.HeaderWriterFilter@74691677, org.springframework.security.web.csrf.CsrfFilter@67521a79, org.springframework.security.web.authentication.logout.LogoutFilter@5e7ea81b, com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter@613a608e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7fa86ddd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1e9f6095, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@507fecf3, org.springframework.security.web.session.SessionManagementFilter@260fffec, org.springframework.security.web.access.ExceptionTranslationFilter@7d6a9d5e, org.springframework.security.web.access.intercept.AuthorizationFilter@2e2c9e24]
+2023-04-15T02:00:57.859+02:00  WARN 15160 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:00:57.860+02:00  INFO 15160 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2023-04-15T02:00:57.861+02:00  WARN 15160 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:00:57.861+02:00  INFO 15160 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2023-04-15T02:00:57.862+02:00  WARN 15160 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:00:57.863+02:00  INFO 15160 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2023-04-15T02:00:58.254+02:00  INFO 15160 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-15T02:00:58.267+02:00  INFO 15160 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Started PoyectoTfgApplication in 10.516 seconds (process running for 11.248)
+2023-04-15T02:01:06.057+02:00  INFO 15160 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-15T02:01:06.059+02:00  INFO 15160 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-15T02:01:06.061+02:00  INFO 15160 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-15T02:02:14.838+02:00  INFO 316 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Starting PoyectoTfgApplication using Java 17.0.6 with PID 316 (C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG\target\classes started by super-pc in C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG)
+2023-04-15T02:02:14.848+02:00  INFO 316 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-04-15T02:02:16.164+02:00  INFO 316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-15T02:02:16.362+02:00  INFO 316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 183 ms. Found 13 JPA repository interfaces.
+2023-04-15T02:02:17.552+02:00  INFO 316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-15T02:02:17.576+02:00  INFO 316 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-15T02:02:17.577+02:00  INFO 316 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-15T02:02:17.784+02:00  INFO 316 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-15T02:02:17.785+02:00  INFO 316 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2855 ms
+2023-04-15T02:02:18.049+02:00  INFO 316 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-15T02:02:18.150+02:00  INFO 316 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-04-15T02:02:18.818+02:00  INFO 316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-15T02:02:19.143+02:00  INFO 316 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1cee2e10
+2023-04-15T02:02:19.149+02:00  INFO 316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-15T02:02:19.187+02:00  INFO 316 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-04-15T02:02:19.192+02:00  WARN 316 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-04-15T02:02:21.461+02:00  INFO 316 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-15T02:02:21.474+02:00  INFO 316 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-15T02:02:22.653+02:00  WARN 316 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-15T02:02:23.288+02:00  INFO 316 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6e475994, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55a2f08b, org.springframework.security.web.context.SecurityContextHolderFilter@589a4305, org.springframework.security.web.header.HeaderWriterFilter@24f77077, org.springframework.security.web.csrf.CsrfFilter@42684d86, org.springframework.security.web.authentication.logout.LogoutFilter@1fe37d27, com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter@613a608e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28c75c93, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35217e0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1a99744a, org.springframework.security.web.session.SessionManagementFilter@42fdf45e, org.springframework.security.web.access.ExceptionTranslationFilter@2eb31735, org.springframework.security.web.access.intercept.AuthorizationFilter@47cf922d]
+2023-04-15T02:02:23.293+02:00  WARN 316 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:02:23.294+02:00  INFO 316 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2023-04-15T02:02:23.295+02:00  WARN 316 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:02:23.295+02:00  INFO 316 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2023-04-15T02:02:23.296+02:00  WARN 316 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:02:23.296+02:00  INFO 316 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2023-04-15T02:02:23.726+02:00  INFO 316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-15T02:02:23.746+02:00  INFO 316 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Started PoyectoTfgApplication in 9.826 seconds (process running for 10.564)
+2023-04-15T02:02:42.973+02:00  INFO 316 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-15T02:02:42.974+02:00  INFO 316 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-15T02:02:42.976+02:00  INFO 316 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-15T02:02:42.999+02:00 DEBUG 316 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /generate-token
+2023-04-15T02:02:43.071+02:00 DEBUG 316 --- [http-nio-8080-exec-2] o.s.security.web.csrf.CsrfFilter         : Invalid CSRF token found for http://localhost:8080/generate-token
+2023-04-15T02:02:43.073+02:00 DEBUG 316 --- [http-nio-8080-exec-2] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2023-04-15T02:02:43.083+02:00 DEBUG 316 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2023-04-15T02:02:43.086+02:00 DEBUG 316 --- [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2023-04-15T02:02:43.087+02:00 DEBUG 316 --- [http-nio-8080-exec-2] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 17C76D6F6E4BDA5025CDD40A5F2CC620
+2023-04-15T02:03:52.440+02:00  INFO 24036 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Starting PoyectoTfgApplication using Java 17.0.6 with PID 24036 (C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG\target\classes started by super-pc in C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG)
+2023-04-15T02:03:52.445+02:00  INFO 24036 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-04-15T02:03:53.797+02:00  INFO 24036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-15T02:03:54.022+02:00  INFO 24036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 207 ms. Found 13 JPA repository interfaces.
+2023-04-15T02:03:55.388+02:00  INFO 24036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-15T02:03:55.419+02:00  INFO 24036 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-15T02:03:55.420+02:00  INFO 24036 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-15T02:03:55.662+02:00  INFO 24036 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-15T02:03:55.663+02:00  INFO 24036 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3129 ms
+2023-04-15T02:03:55.924+02:00  INFO 24036 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-15T02:03:56.067+02:00  INFO 24036 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-04-15T02:03:56.638+02:00  INFO 24036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-15T02:03:56.968+02:00  INFO 24036 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@421ead7e
+2023-04-15T02:03:56.976+02:00  INFO 24036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-15T02:03:57.005+02:00  INFO 24036 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-04-15T02:03:57.008+02:00  WARN 24036 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-04-15T02:03:59.358+02:00  INFO 24036 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-15T02:03:59.381+02:00  INFO 24036 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-15T02:04:00.644+02:00  WARN 24036 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-15T02:04:01.242+02:00  INFO 24036 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1828ab51, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e7ea81b, org.springframework.security.web.context.SecurityContextHolderFilter@39a1e1e6, org.springframework.security.web.header.HeaderWriterFilter@4db45d, org.springframework.security.web.csrf.CsrfFilter@596d17f4, org.springframework.security.web.authentication.logout.LogoutFilter@423d662a, com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter@4603c412, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5f346355, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66e62e19, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@589a4305, org.springframework.security.web.session.SessionManagementFilter@3314f179, org.springframework.security.web.access.ExceptionTranslationFilter@20ad64c, org.springframework.security.web.access.intercept.AuthorizationFilter@7156f8cf]
+2023-04-15T02:04:01.263+02:00  WARN 24036 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:04:01.264+02:00  INFO 24036 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2023-04-15T02:04:01.265+02:00  WARN 24036 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:04:01.266+02:00  INFO 24036 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2023-04-15T02:04:01.266+02:00  WARN 24036 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:04:01.266+02:00  INFO 24036 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2023-04-15T02:04:01.608+02:00  INFO 24036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-15T02:04:01.624+02:00  INFO 24036 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Started PoyectoTfgApplication in 10.117 seconds (process running for 10.845)
+2023-04-15T02:04:08.589+02:00  INFO 24036 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-15T02:04:08.590+02:00  INFO 24036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-15T02:04:08.592+02:00  INFO 24036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-15T02:04:08.619+02:00 DEBUG 24036 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /generate-token
+2023-04-15T02:04:08.706+02:00 DEBUG 24036 --- [http-nio-8080-exec-2] o.s.security.web.csrf.CsrfFilter         : Invalid CSRF token found for http://localhost:8080/generate-token
+2023-04-15T02:04:08.708+02:00 DEBUG 24036 --- [http-nio-8080-exec-2] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2023-04-15T02:04:08.718+02:00 DEBUG 24036 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2023-04-15T02:04:08.724+02:00 DEBUG 24036 --- [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2023-04-15T02:04:08.725+02:00 DEBUG 24036 --- [http-nio-8080-exec-2] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id D7173C31D803C66EA2A7652383B2318B
+2023-04-15T02:04:18.473+02:00  INFO 20420 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Starting PoyectoTfgApplication using Java 17.0.6 with PID 20420 (C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG\target\classes started by super-pc in C:\Users\super-pc\Documents\DAM\4_trimestre\Proyecto_DAM\PoyectoTFG)
+2023-04-15T02:04:18.482+02:00  INFO 20420 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-04-15T02:04:20.003+02:00  INFO 20420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-15T02:04:20.242+02:00  INFO 20420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 221 ms. Found 13 JPA repository interfaces.
+2023-04-15T02:04:21.661+02:00  INFO 20420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-15T02:04:21.678+02:00  INFO 20420 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-15T02:04:21.679+02:00  INFO 20420 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-15T02:04:21.941+02:00  INFO 20420 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-15T02:04:21.942+02:00  INFO 20420 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3366 ms
+2023-04-15T02:04:22.337+02:00  INFO 20420 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-15T02:04:22.484+02:00  INFO 20420 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-04-15T02:04:23.058+02:00  INFO 20420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-15T02:04:23.389+02:00  INFO 20420 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c472300
+2023-04-15T02:04:23.394+02:00  INFO 20420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-15T02:04:23.438+02:00  INFO 20420 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-04-15T02:04:23.442+02:00  WARN 20420 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-04-15T02:04:25.837+02:00  INFO 20420 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-15T02:04:25.851+02:00  INFO 20420 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-15T02:04:27.091+02:00  WARN 20420 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-15T02:04:27.893+02:00  INFO 20420 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2eb31735, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73753326, org.springframework.security.web.context.SecurityContextHolderFilter@129348e8, org.springframework.security.web.header.HeaderWriterFilter@64245ca9, org.springframework.security.web.authentication.logout.LogoutFilter@1e9f6095, com.proyectoTFG.PoyectoTFG.Security.JwtAuthenticationFilter@49654a35, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39a03ccc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4db45d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24f77077, org.springframework.security.web.session.SessionManagementFilter@e21d73, org.springframework.security.web.access.ExceptionTranslationFilter@7cc7e441, org.springframework.security.web.access.intercept.AuthorizationFilter@1b08d26f]
+2023-04-15T02:04:27.914+02:00  WARN 20420 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:04:27.915+02:00  INFO 20420 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2023-04-15T02:04:27.916+02:00  WARN 20420 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:04:27.916+02:00  INFO 20420 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2023-04-15T02:04:27.916+02:00  WARN 20420 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-04-15T02:04:27.917+02:00  INFO 20420 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2023-04-15T02:04:28.360+02:00  INFO 20420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-15T02:04:28.376+02:00  INFO 20420 --- [main] c.p.PoyectoTFG.PoyectoTfgApplication     : Started PoyectoTfgApplication in 10.846 seconds (process running for 11.558)
+2023-04-15T02:04:34.176+02:00  INFO 20420 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-15T02:04:34.178+02:00  INFO 20420 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-15T02:04:34.180+02:00  INFO 20420 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-04-15T02:04:34.210+02:00 DEBUG 20420 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /generate-token
+2023-04-15T02:04:34.221+02:00 DEBUG 20420 --- [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2023-04-15T02:04:34.221+02:00 DEBUG 20420 --- [http-nio-8080-exec-2] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 06503871382A8B7BC66292ADEE467C68
+2023-04-15T02:04:34.223+02:00 DEBUG 20420 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /generate-token
+2023-04-15T02:04:34.536+02:00 DEBUG 20420 --- [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
