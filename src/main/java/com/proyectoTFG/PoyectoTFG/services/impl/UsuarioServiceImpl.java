@@ -9,6 +9,8 @@ import com.proyectoTFG.PoyectoTFG.entities.Usuario;
 import com.proyectoTFG.PoyectoTFG.repositories.UsuarioRepository;
 import com.proyectoTFG.PoyectoTFG.services.UsuarioService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 
@@ -17,6 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     private UsuarioRepository usuarioRepository;
     
     @Override
+    //@Transactional
     public List<Usuario> findAll() {
         return usuarioRepository.findAll();
     }
@@ -37,7 +40,9 @@ public class UsuarioServiceImpl implements UsuarioService{
         usuarioRepository.deleteById(id);
     }
 
+
     @Override
+    //@Transactional
     public Usuario findByUserName(String email) {
         return usuarioRepository.findByUserName(email);
     }

@@ -4,12 +4,14 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -23,11 +25,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.transaction.Transactional;
 
 @Entity
 @Table(name = "usuarios")
 @CrossOrigin("*")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuarioRoles"}) // se ignora la propiedad usuarioRoles
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuarioRoles"}) // se ignora la propiedad usuarioRoles
 public class Usuario implements UserDetails{
 
     @Id
@@ -45,8 +48,8 @@ public class Usuario implements UserDetails{
     @Column(nullable = false)
     private String DNI;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "usuario")
-    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "usuario")
+    @JsonManagedReference
     private Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
     @Column(nullable = false)
@@ -218,7 +221,10 @@ public class Usuario implements UserDetails{
     }
 
     @Override
+    @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        //se incializa la coleccion de usuarioRoles
+        //Hibernate.initialize(this.usuarioRoles);
         Set<Authority> autoridades = new HashSet<>();
         this.usuarioRoles.forEach(usuarioRol -> {
             autoridades.add(new Authority(usuarioRol.getRol().getRolNombre()));

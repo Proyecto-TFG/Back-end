@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.proyectoTFG.PoyectoTFG.services.impl.UserDetailsServiceImpl;
 
@@ -28,6 +29,7 @@ import com.proyectoTFG.PoyectoTFG.services.impl.UserDetailsServiceImpl;
 @EnableWebSecurity
 @Configuration
 @EnableMethodSecurity(prePostEnabled = true)
+@EnableTransactionManagement
 public class MySecurityConfig {
 
     @Autowired
@@ -66,7 +68,7 @@ public class MySecurityConfig {
                 //.httpBasic(withDefaults())
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/generate-token").permitAll()
+                        .requestMatchers("/generate-token", "api/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"api/usuarios/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .anyRequest().authenticated())

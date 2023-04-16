@@ -1,6 +1,8 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -13,18 +15,19 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios_roles")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuario"}) // se ignora la propiedad usuario
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuario"}) // se ignora la propiedad usuario
 public class UsuarioRol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuarioRolId;
 
-    @JsonIgnoreProperties("usuariosRoles")
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
 
     @ManyToOne
+    @JsonIgnore
     private Rol rol;
 
 
