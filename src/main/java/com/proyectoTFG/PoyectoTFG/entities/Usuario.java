@@ -3,20 +3,17 @@ package com.proyectoTFG.PoyectoTFG.entities;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,43 +22,33 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.transaction.Transactional;
 
 @Entity
 @Table(name = "usuarios")
-@CrossOrigin("*")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuarioRoles"}) // se ignora la propiedad usuarioRoles
 public class Usuario implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-
+    private Long id;
 
     @Column(unique = true)
     private String userName;
-
 
     private String password;
 
     @Column(nullable = false)
     private String DNI;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "usuario")
-    @JsonManagedReference
-    private Set<UsuarioRol> usuarioRoles = new HashSet<>();
-
-    @Column(nullable = false)
+    @Column
     private String nombre;
 
-    @Column(nullable = false)
+    @Column
     private String apellido;
 
-    @Column(nullable = false)
+    @Column
     private String telefono;
 
-    @Column(nullable = false)
+    @Column
     private String direccion;
 
     // Relación uno a uno con Trabajador
@@ -71,8 +58,6 @@ public class Usuario implements UserDetails{
     // Relación uno a uno con Cliente
     @OneToOne(mappedBy = "usuario")
     private Cliente cliente;
-
-    
 
     @ManyToOne
     @JoinColumn(name = "idPais")
@@ -86,33 +71,31 @@ public class Usuario implements UserDetails{
     @JoinColumn(name = "idProvincia")
     private Provincia provincia;
 
-
-
-
+    /**@JoinTable(
+        name = "usuarios_roles",
+        joinColumns = @JoinColumn(name = "usuario_id"),
+        inverseJoinColumns = @JoinColumn(name = "rol_id")
+    )*/
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<UsuarioRol> roles = new HashSet<>();
 
     public Usuario() {
     }
 
-    public Usuario(String userName, String password, String DNI, String nombre, String apellido, String telefono,
-            String direccion, Pais pais, Ciudad ciudad, Provincia provincia) {
+    public Usuario(String userName, String password, String dni) {
         this.userName = userName;
         this.password = password;
-        this.DNI = DNI;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.pais = pais;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
+        this.DNI = dni;
     }
 
 
-    public Integer getId() {
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -138,14 +121,6 @@ public class Usuario implements UserDetails{
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
-    }
-
-    public Set<UsuarioRol> getUsuarioRoles() {
-        return this.usuarioRoles;
-    }
-
-    public void setUsuarioRoles(Set<UsuarioRol> usuarioRoles) {
-        this.usuarioRoles = usuarioRoles;
     }
 
     public String getNombre() {
@@ -220,16 +195,23 @@ public class Usuario implements UserDetails{
         this.provincia = provincia;
     }
 
+    public Set<UsuarioRol> getRoles() {
+        return this.roles;
+    }
+
+    public void setRoles(Set<UsuarioRol> roles) {
+        this.roles = roles;
+    }
+
+    public void addRol(UsuarioRol rol){
+        this.roles.add(rol);
+    }
+
     @Override
-    @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //se incializa la coleccion de usuarioRoles
-        //Hibernate.initialize(this.usuarioRoles);
-        Set<Authority> autoridades = new HashSet<>();
-        this.usuarioRoles.forEach(usuarioRol -> {
-            autoridades.add(new Authority(usuarioRol.getRol().getRolNombre()));
-        });
-        return autoridades;
+        return roles.stream()
+            .map(usuarioRol -> new SimpleGrantedAuthority(usuarioRol.getRol().getNombre()))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -249,14 +231,11 @@ public class Usuario implements UserDetails{
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return true;        
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return true;        
     }
-
-    
-    
 }

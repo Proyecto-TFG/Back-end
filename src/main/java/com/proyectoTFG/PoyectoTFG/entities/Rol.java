@@ -3,11 +3,13 @@ package com.proyectoTFG.PoyectoTFG.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -17,39 +19,49 @@ import jakarta.persistence.Table;
 public class Rol {
 
     @Id
-    private Long rolId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String rolNombre;
+    @Column(nullable = false, length = 50, unique = true)
+    private String nombre;
 
-    @JsonIgnoreProperties("usuariosRoles")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "rol")
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<UsuarioRol> usuariosRoles = new HashSet<>();
-
 
     public Rol() {
     }
 
-    public Rol(Long rolId, String rolNombre) {
-        this.rolId = rolId;
-        this.rolNombre = rolNombre;
+    public Rol(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Rol(Long id) {
+        this.id = id;
     }
 
 
-    public Long getRolId() {
-        return this.rolId;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setRolId(Long rolId) {
-        this.rolId = rolId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getRolNombre() {
-        return this.rolNombre;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public void setRolNombre(String rolNombre) {
-        this.rolNombre = rolNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
+
+    @Override
+    public String toString(){
+        return this.nombre;
+    }
+
 
     public Set<UsuarioRol> getUsuariosRoles() {
         return this.usuariosRoles;

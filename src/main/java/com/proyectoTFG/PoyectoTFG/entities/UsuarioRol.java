@@ -1,42 +1,50 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios_roles")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuario"}) // se ignora la propiedad usuario
 public class UsuarioRol {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long usuarioRolId;
+    private Long id;
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    @JsonBackReference
     private Usuario usuario;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rol_id")
+    @JsonBackReference
     private Rol rol;
 
 
-    public Long getUsuarioRolId() {
-        return this.usuarioRolId;
+    public UsuarioRol() {
     }
 
-    public void setUsuarioRolId(Long usuarioRolId) {
-        this.usuarioRolId = usuarioRolId;
+    public UsuarioRol(Usuario usuario, Rol rol) {
+        this.usuario = usuario;
+        this.rol = rol;
+    }
+
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Usuario getUsuario() {
@@ -54,6 +62,5 @@ public class UsuarioRol {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-    
     
 }

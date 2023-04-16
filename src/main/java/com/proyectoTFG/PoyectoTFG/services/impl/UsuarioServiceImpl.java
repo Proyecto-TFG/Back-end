@@ -1,6 +1,7 @@
 package com.proyectoTFG.PoyectoTFG.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.proyectoTFG.PoyectoTFG.entities.Usuario;
 import com.proyectoTFG.PoyectoTFG.repositories.UsuarioRepository;
 import com.proyectoTFG.PoyectoTFG.services.UsuarioService;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
@@ -25,7 +24,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Usuario findById(Integer id) {
+    public Usuario findById(Long id) {
         return usuarioRepository.findById(id).orElse(null);
     }
 
@@ -35,7 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
 
         usuarioRepository.deleteById(id);
     }
@@ -43,7 +42,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     //@Transactional
-    public Usuario findByUserName(String email) {
+    public Optional<Usuario> findByUserName(String email) {
         return usuarioRepository.findByUserName(email);
     }
     

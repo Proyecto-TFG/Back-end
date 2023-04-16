@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyectoTFG.PoyectoTFG.entities.Usuario;
 import com.proyectoTFG.PoyectoTFG.services.UsuarioService;
 
+import jakarta.annotation.security.RolesAllowed;
+
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
@@ -26,13 +28,14 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
+    @RolesAllowed("ROLE_MANAGER")
     public ResponseEntity<List <Usuario>> findAll() {
         List<Usuario> usuarios = usuarioService.findAll();
         return ResponseEntity.ok(usuarios);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         Usuario usuario = usuarioService.findById(id);
         if (usuario == null) {
             return ResponseEntity.notFound().build();
@@ -50,7 +53,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario) {
         Usuario existingUsuario = usuarioService.findById(id);
         if (existingUsuario == null) {
             return ResponseEntity.notFound().build();
@@ -61,7 +64,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}") 
-    public ResponseEntity<Usuario> delete(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> delete(@PathVariable Long id) {
         Usuario existingUsuario = usuarioService.findById(id);
         if (existingUsuario == null) {
             return ResponseEntity.notFound().build();
