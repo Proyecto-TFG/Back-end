@@ -7,7 +7,7 @@ import com.proyectoTFG.PoyectoTFG.entities.Proovedor;
 public interface ProovedorService {
     
     List<Proovedor> findAll();
-    Proovedor findById(Integer id);
+    Proovedor findById(Long id);
     Proovedor save(Proovedor proovedor);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 }

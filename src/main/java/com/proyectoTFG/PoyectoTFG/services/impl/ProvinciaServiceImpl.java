@@ -21,7 +21,7 @@ public class ProvinciaServiceImpl implements ProvinciaService{
     }
 
     @Override
-    public Provincia findById(Integer id) {
+    public Provincia findById(Long id) {
         return provinciaRepository.findById(id).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class ProvinciaServiceImpl implements ProvinciaService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         provinciaRepository.deleteById(id);
     }
 }

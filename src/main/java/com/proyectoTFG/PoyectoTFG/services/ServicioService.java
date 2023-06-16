@@ -9,4 +9,5 @@ public interface ServicioService {
     Servicio findById(Integer id);
     Servicio save(Servicio servicio);
     void deleteById(Integer id);
+    List<Servicio> findAllByIdCliente (Long idCliente);
 }

@@ -20,7 +20,7 @@ public class CategoriaServiceImpl implements CategoriaService{
     }
 
     @Override
-    public Categoria findById(Integer id) {
+    public Categoria findById(Long id) {
         return categoriaRepository.findById(id).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class CategoriaServiceImpl implements CategoriaService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         categoriaRepository.deleteById(id);
     }
 }

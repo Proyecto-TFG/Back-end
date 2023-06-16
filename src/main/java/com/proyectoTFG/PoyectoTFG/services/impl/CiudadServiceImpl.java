@@ -20,7 +20,7 @@ public class CiudadServiceImpl implements CiudadService{
     }
 
     @Override
-    public Ciudad findById(Integer id) {
+    public Ciudad findById(Long id) {
         return ciudadRepository.findById(id).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class CiudadServiceImpl implements CiudadService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         ciudadRepository.deleteById(id);
     }
 }

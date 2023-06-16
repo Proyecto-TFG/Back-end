@@ -1,29 +1,32 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "trabajadores")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idTrabajador")
 public class Trabajador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTrabajador;
+    private Long idTrabajador;
 
     @Column(nullable = false)
     private String tipo;
 
     // Relación uno a uno con Usuario
-    @OneToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private Usuario usuario;
+    //@OneToOne(fetch = FetchType.EAGER, optional = false)
+    //@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @Column(nullable = false)
+    private Long idUsuario;
 
 
     public Trabajador() {
@@ -34,11 +37,11 @@ public class Trabajador {
     }
 
 
-    public Integer getIdTrabajador() {
+    public Long getIdTrabajador() {
         return this.idTrabajador;
     }
 
-    public void setIdTrabajador(Integer idTrabajador) {
+    public void setIdTrabajador(Long idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
 
@@ -50,13 +53,15 @@ public class Trabajador {
         this.tipo = tipo;
     }
 
-    public Usuario getUsuario() {
-        return this.usuario;
+
+    public Long getIdUsuario() {
+        return this.idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
+    
 
     
 

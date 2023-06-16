@@ -7,7 +7,7 @@ import com.proyectoTFG.PoyectoTFG.entities.Producto;
 public interface ProductoService {
     
     List<Producto> findAll();
-    Producto findById(Integer id);
+    Producto findById(Long id);
     Producto save(Producto producto);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 }

@@ -6,7 +6,7 @@ import com.proyectoTFG.PoyectoTFG.entities.Compra;
 
 public interface CompraService {
     List<Compra> findAll();
-    Compra findById(Integer id);
+    Compra findById(Long id);
     Compra save(Compra compra);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 }

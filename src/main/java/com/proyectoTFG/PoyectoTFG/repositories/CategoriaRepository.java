@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.proyectoTFG.PoyectoTFG.entities.Categoria;
 
 //@Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
+public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
     
 }

@@ -1,15 +1,12 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuarios_roles")
@@ -19,22 +16,18 @@ public class UsuarioRol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
-    @JsonBackReference
-    private Usuario usuario;
+    @Column(name = "idUsuario")
+    private Long idUsuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rol_id")
-    @JsonBackReference
-    private Rol rol;
+    @Column(name = "idRol")
+    private Long rol;
 
 
     public UsuarioRol() {
     }
 
-    public UsuarioRol(Usuario usuario, Rol rol) {
-        this.usuario = usuario;
+    public UsuarioRol(Long idUsuario, Long rol) {
+        this.idUsuario = idUsuario;
         this.rol = rol;
     }
 
@@ -47,19 +40,19 @@ public class UsuarioRol {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
-        return this.usuario;
+    public Long getUsuario() {
+        return this.idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Long usuario) {
+        this.idUsuario = usuario;
     }
 
-    public Rol getRol() {
+    public Long getRol() {
         return this.rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(Long rol) {
         this.rol = rol;
     }
     

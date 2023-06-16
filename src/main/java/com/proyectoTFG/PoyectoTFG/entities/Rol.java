@@ -1,18 +1,11 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
@@ -25,20 +18,18 @@ public class Rol {
     @Column(nullable = false, length = 50, unique = true)
     private String nombre;
 
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<UsuarioRol> usuariosRoles = new HashSet<>();
+    @Column(name = "idUsuarioRol")
+    private Long idUsuarioRol;
 
     public Rol() {
     }
 
-    public Rol(String nombre) {
+
+    public Rol(String nombre, Long idUsuarioRol) {
         this.nombre = nombre;
+        this.idUsuarioRol = idUsuarioRol;
     }
 
-    public Rol(Long id) {
-        this.id = id;
-    }
 
 
     public Long getId() {
@@ -57,19 +48,13 @@ public class Rol {
         this.nombre = nombre;
     }
 
-    @Override
-    public String toString(){
-        return this.nombre;
+    public Long getIdUsuarioRol() {
+        return this.idUsuarioRol;
     }
 
-
-    public Set<UsuarioRol> getUsuariosRoles() {
-        return this.usuariosRoles;
+    public void setIdUsuarioRol(Long idUsuarioRol) {
+        this.idUsuarioRol = idUsuarioRol;
     }
-
-    public void setUsuariosRoles(Set<UsuarioRol> usuariosRoles) {
-        this.usuariosRoles = usuariosRoles;
-    }
-
+   
     
 }

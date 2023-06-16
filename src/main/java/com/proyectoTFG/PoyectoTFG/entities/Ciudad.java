@@ -1,18 +1,11 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import java.util.Set;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "ciudades")
@@ -20,40 +13,34 @@ public class Ciudad {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCiudad;
+    private Long idCiudad;
 
     @Column(nullable = false)
     private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "idProvincia")
-    private Provincia provincia;
+    @Column(name = "idProvincia")
+    private Long idProvincia;
 
-    @ManyToOne
-    @JoinColumn(name = "idPais")
-    private Pais pais;
-
-    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Usuario> usuarios;
+    @Column(name = "idPais")
+    private Long idPais;
 
 
     public Ciudad() {
     }
 
-    public Ciudad(Integer idCiudad, String nombre, Provincia provincia, Pais pais, Set<Usuario> usuarios) {
+    public Ciudad(Long idCiudad, String nombre, Long idProvincia, Long idPais) {
         this.idCiudad = idCiudad;
         this.nombre = nombre;
-        this.provincia = provincia;
-        this.pais = pais;
-        this.usuarios = usuarios;
+        this.idProvincia = idProvincia;
+        this.idPais = idPais;
     }
 
 
-    public Integer getIdCiudad() {
+    public Long getIdCiudad() {
         return this.idCiudad;
     }
 
-    public void setIdCiudad(Integer idCiudad) {
+    public void setIdCiudad(Long idCiudad) {
         this.idCiudad = idCiudad;
     }
 
@@ -65,29 +52,23 @@ public class Ciudad {
         this.nombre = nombre;
     }
 
-    public Provincia getProvincia() {
-        return this.provincia;
+
+
+    public Long getIdProvincia() {
+        return this.idProvincia;
     }
 
-    public void setProvincia(Provincia provincia) {
-        this.provincia = provincia;
+    public void setIdProvincia(Long idProvincia) {
+        this.idProvincia = idProvincia;
     }
 
-    public Pais getPais() {
-        return this.pais;
+    public Long getIdPais() {
+        return this.idPais;
     }
 
-    public void setPais(Pais pais) {
-        this.pais = pais;
+    public void setIdPais(Long idPais) {
+        this.idPais = idPais;
     }
-
-    public Set<Usuario> getUsuarios() {
-        return this.usuarios;
-    }
-
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
+    
 
 }

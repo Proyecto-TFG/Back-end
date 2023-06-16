@@ -22,7 +22,7 @@ public class TrabajadorServiceImpl implements TrabajadorService {
     }
 
     @Override
-    public Trabajador findById(Integer id) {
+    public Trabajador findById(Long id) {
         return trabajadorRepository.findById(id).orElse(null);
     }
 
@@ -32,8 +32,13 @@ public class TrabajadorServiceImpl implements TrabajadorService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         trabajadorRepository.deleteById(id);
+    }
+
+    @Override
+    public Trabajador obtenerTrabajadorPorIdUsuario(Long idUsuario) {
+        return trabajadorRepository.findByIdUsuario(idUsuario);
     }
 
 

@@ -7,7 +7,7 @@ import com.proyectoTFG.PoyectoTFG.entities.Ciudad;
 public interface CiudadService {
     
     List<Ciudad> findAll();
-    Ciudad findById(Integer id);
+    Ciudad findById(Long id);
     Ciudad save(Ciudad ciudad);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 }

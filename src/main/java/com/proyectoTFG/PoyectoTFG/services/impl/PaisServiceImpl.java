@@ -20,7 +20,7 @@ public class PaisServiceImpl implements PaisService{
     }
 
     @Override
-    public Pais findById(Integer id) {
+    public Pais findById(Long id) {
         return paisRepository.findById(id).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class PaisServiceImpl implements PaisService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         paisRepository.deleteById(id);
     }
 }

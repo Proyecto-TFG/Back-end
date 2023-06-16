@@ -1,16 +1,11 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import java.util.Set;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "paises")
@@ -18,31 +13,27 @@ public class Pais {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPais;
+    private Long idPais;
 
     @Column(nullable = false)
     private String nombre;
-
-    @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Usuario> usuarios;
 
 
 
     public Pais() {
     }
 
-    public Pais(Integer idPais, String nombre, Set<Usuario> usuarios) {
+    public Pais(Long idPais, String nombre) {
         this.idPais = idPais;
         this.nombre = nombre;
-        this.usuarios = usuarios;
     }
 
 
-    public Integer getIdPais() {
+    public Long getIdPais() {
         return this.idPais;
     }
 
-    public void setIdPais(Integer idPais) {
+    public void setIdPais(Long idPais) {
         this.idPais = idPais;
     }
 
@@ -53,16 +44,5 @@ public class Pais {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public Set<Usuario> getUsuarios() {
-        return this.usuarios;
-    }
-
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-
-
     
 }

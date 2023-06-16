@@ -7,8 +7,9 @@ import com.proyectoTFG.PoyectoTFG.entities.Trabajador;
 
 public interface TrabajadorService {
     List<Trabajador> findAll();
-    Trabajador findById(Integer id);
+    Trabajador obtenerTrabajadorPorIdUsuario(Long idUsuario);
+    Trabajador findById(Long id);
     Trabajador save(Trabajador trabajador);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
 }

@@ -20,7 +20,7 @@ public class CompraServiceImpl implements CompraService{
     }
 
     @Override
-    public Compra findById(Integer id) {
+    public Compra findById(Long id) {
         return compraRepository.findById(id).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class CompraServiceImpl implements CompraService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         compraRepository.deleteById(id);
     }
 }

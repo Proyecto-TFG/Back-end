@@ -20,7 +20,7 @@ public class ProovedorServiceImpl implements ProovedorService{
     }
 
     @Override
-    public Proovedor findById(Integer id) {
+    public Proovedor findById(Long id) {
         return proovedorRepository.findById(id).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class ProovedorServiceImpl implements ProovedorService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         proovedorRepository.deleteById(id);
     }
 }

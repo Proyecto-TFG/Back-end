@@ -1,16 +1,11 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import java.util.Set;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
@@ -18,29 +13,26 @@ public class Categoria {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCategoria;
+    private Long idCategoria;
 
     @Column(nullable = false)
     private String nombre;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Producto> productos;
 
 
     public Categoria() {
     }
 
-    public Categoria(Integer idCategoria, String nombre, Set<Producto> productos) {
+    public Categoria(Long idCategoria, String nombre) {
         this.idCategoria = idCategoria;
         this.nombre = nombre;
-        this.productos = productos;
     }
 
-    public Integer getIdCategoria() {
+    public Long getIdCategoria() {
         return this.idCategoria;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
+    public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
     }
 
@@ -50,14 +42,6 @@ public class Categoria {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Set<Producto> getProductos() {
-        return this.productos;
-    }
-
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
     }
 
 }

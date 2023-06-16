@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.proyectoTFG.PoyectoTFG.entities.Trabajador;
 
 
-public interface TrabajadorRepository extends JpaRepository<Trabajador, Integer> {
+public interface TrabajadorRepository extends JpaRepository<Trabajador, Long> {
 
+    Trabajador findByIdUsuario(Long idUsuario);
 }

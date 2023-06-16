@@ -2,33 +2,22 @@ package com.proyectoTFG.PoyectoTFG.entities;
 
 public class AuthResponse {
 
-    private String email;
-    private String accessToken;
-
-    public AuthResponse(String email, String accessToken) {
-        this.email = email;
-        this.accessToken = accessToken;
-    }
-
+    private String token;
 
     public AuthResponse() {
     }
 
-
-    public String getEmail() {
-        return this.email;
+    public AuthResponse(String token) {
+        this.token = token;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+
+    public String getToken() {
+        return this.token;
     }
 
-    public String getAccessToken() {
-        return this.accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     

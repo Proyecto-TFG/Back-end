@@ -7,7 +7,7 @@ import com.proyectoTFG.PoyectoTFG.entities.Cliente;
 public interface ClienteService {
     
     List<Cliente> findAll();
-    Cliente findById(Integer id);
+    Cliente findById(Long id);
     Cliente save(Cliente cliente);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 }

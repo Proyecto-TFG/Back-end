@@ -1,21 +1,20 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
 @Entity
 @Table(name = "proovedores")
 public class Proovedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProovedor;
+    private Long idProovedor;
 
     @Column(nullable = false)
     private String NIF;
@@ -29,44 +28,40 @@ public class Proovedor {
     @Column(nullable = false)
     private String telefono;
 
-    @ManyToOne
     @JoinColumn(name = "idPais")
-    private Pais pais;
+    private Long idPais;
 
-    @ManyToOne
     @JoinColumn(name = "idCiudad")
-    private Ciudad ciudad;
+    private Long idCiudad;
 
-    @ManyToOne
     @JoinColumn(name = "idProvincia")
-    private Provincia provincia;
+    private Long idProvincia;
 
-    @Column(nullable = false)
+    @Column(unique = true)
+    @Email(message = "El email no es valido")
     private String email;
 
 
     public Proovedor() {
     }
 
-
-    public Proovedor(Integer idProovedor, String NIF, String nombre, String direccion, String telefono, Pais pais, Ciudad ciudad, Provincia provincia, String email) {
-        this.idProovedor = idProovedor;
+    public Proovedor(String NIF, String nombre, String direccion, String telefono, Long idPais, Long idCiudad, Long idProvincia, String email) {
         this.NIF = NIF;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.pais = pais;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
+        this.idPais = idPais;
+        this.idCiudad = idCiudad;
+        this.idProvincia = idProvincia;
         this.email = email;
     }
 
 
-    public Integer getIdProovedor() {
+    public Long getIdProovedor() {
         return this.idProovedor;
     }
 
-    public void setIdProovedor(Integer idProovedor) {
+    public void setIdProovedor(Long idProovedor) {
         this.idProovedor = idProovedor;
     }
 
@@ -102,28 +97,28 @@ public class Proovedor {
         this.telefono = telefono;
     }
 
-    public Pais getPais() {
-        return this.pais;
+    public Long getIdPais() {
+        return this.idPais;
     }
 
-    public void setPais(Pais pais) {
-        this.pais = pais;
+    public void setIdPais(Long idPais) {
+        this.idPais = idPais;
     }
 
-    public Ciudad getCiudad() {
-        return this.ciudad;
+    public Long getIdCiudad() {
+        return this.idCiudad;
     }
 
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
+    public void setIdCiudad(Long idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
-    public Provincia getProvincia() {
-        return this.provincia;
+    public Long getIdProvincia() {
+        return this.idProvincia;
     }
 
-    public void setProvincia(Provincia provincia) {
-        this.provincia = provincia;
+    public void setIdProvincia(Long idProvincia) {
+        this.idProvincia = idProvincia;
     }
 
     public String getEmail() {
@@ -134,5 +129,7 @@ public class Proovedor {
         this.email = email;
     }
 
+
+    
     
 }

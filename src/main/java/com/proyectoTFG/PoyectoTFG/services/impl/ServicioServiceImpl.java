@@ -34,4 +34,9 @@ public class ServicioServiceImpl implements ServicioService{
     public void deleteById(Integer id) {
         servicioRepository.deleteById(id);
     }
+
+    @Override
+    public List<Servicio> findAllByIdCliente(Long idCliente) {
+        return servicioRepository.findAllByIdCliente(idCliente);
+    }
 }

@@ -20,7 +20,7 @@ public class ProductoServiceImpl implements ProductoService{
     }
 
     @Override
-    public Producto findById(Integer id) {
+    public Producto findById(Long id) {
         return productoRepository.findById(id).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class ProductoServiceImpl implements ProductoService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         productoRepository.deleteById(id);
     }
 }

@@ -1,17 +1,17 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "servicios")
@@ -21,9 +21,8 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idServicio;
 
-    @ManyToOne
-    @JoinColumn(name = "idCliente")
-    private Cliente cliente;
+    @Column(name = "idCliente", nullable = false)
+    private Long idCliente;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
@@ -34,31 +33,41 @@ public class Servicio {
     private Date fechaEntrega;
 
     @Column(nullable = false)
+    private Double subtotal;
+
+    @Column(nullable = false)
+    private String formaDePago;
+
+    @Column
+    private String notas;
+
+    @Column
+    private String nombre;
+
+    @Column(nullable = false)
     private Boolean entregado;
 
-    @ManyToOne
-    @JoinColumn(name = "idDetalle")
-    private DetalleServicio detalleServicio;
-
-    @ManyToOne
-    @JoinColumn(name = "idTrabajador")
-    private Trabajador trabajador;
+    @Column(name = "idTrabajador", nullable = false)
+    private Long idTrabajador;
 
 
     public Servicio() {
     }
 
 
-    public Servicio(Integer idServicio, Cliente cliente, Date fechaInicio, Date fechaEntrega, Boolean entregado, DetalleServicio detalleServicio, Trabajador trabajador) {
-        this.idServicio = idServicio;
-        this.cliente = cliente;
+
+    public Servicio(Long idCliente, Date fechaInicio, Date fechaEntrega, Double subtotal, String formaDePago, String notas, String nombre, Boolean entregado, Long idTrabajador) {
+        this.idCliente = idCliente;
         this.fechaInicio = fechaInicio;
         this.fechaEntrega = fechaEntrega;
+        this.subtotal = subtotal;
+        this.formaDePago = formaDePago;
+        this.notas = notas;
+        this.nombre = nombre;
         this.entregado = entregado;
-        this.detalleServicio = detalleServicio;
-        this.trabajador = trabajador;
+        this.idTrabajador = idTrabajador;
     }
-
+    
 
     public Integer getIdServicio() {
         return this.idServicio;
@@ -68,12 +77,12 @@ public class Servicio {
         this.idServicio = idServicio;
     }
 
-    public Cliente getCliente() {
-        return this.cliente;
+    public Long getIdCliente() {
+        return this.idCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Date getFechaInicio() {
@@ -92,6 +101,38 @@ public class Servicio {
         this.fechaEntrega = fechaEntrega;
     }
 
+    public Double getSubtotal() {
+        return this.subtotal;
+    }
+
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public String getFormaDePago() {
+        return this.formaDePago;
+    }
+
+    public void setFormaDePago(String formaDePago) {
+        this.formaDePago = formaDePago;
+    }
+
+    public String getNotas() {
+        return this.notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Boolean isEntregado() {
         return this.entregado;
     }
@@ -104,23 +145,17 @@ public class Servicio {
         this.entregado = entregado;
     }
 
-    public DetalleServicio getDetalleServicio() {
-        return this.detalleServicio;
+    public Long getIdTrabajador() {
+        return this.idTrabajador;
     }
 
-    public void setDetalleServicio(DetalleServicio detalleServicio) {
-        this.detalleServicio = detalleServicio;
+    public void setIdTrabajador(Long idTrabajador) {
+        this.idTrabajador = idTrabajador;
     }
 
-    public Trabajador getTrabajador() {
-        return this.trabajador;
-    }
-
-    public void setTrabajador(Trabajador trabajador) {
-        this.trabajador = trabajador;
-    }
+ 
 
 
-
+    
     
 }

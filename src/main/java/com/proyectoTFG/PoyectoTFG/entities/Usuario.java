@@ -1,43 +1,38 @@
 package com.proyectoTFG.PoyectoTFG.entities;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.proyectoTFG.PoyectoTFG.repositories.RolRepository;
+import com.proyectoTFG.PoyectoTFG.repositories.UsuarioRolRepository;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements UserDetails{
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
+    @Email(message = "El email no es valido")
     private String userName;
 
+    @NotNull
+    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
     private String password;
 
     @Column(nullable = false)
-    private String DNI;
+    private String dni;
 
     @Column
     private String nombre;
@@ -51,42 +46,43 @@ public class Usuario implements UserDetails{
     @Column
     private String direccion;
 
-    // Relación uno a uno con Trabajador
-    @OneToOne(mappedBy = "usuario")
-    private Trabajador trabajador;
+    @Column(name = "idPais")
+    private Long pais;
 
-    // Relación uno a uno con Cliente
-    @OneToOne(mappedBy = "usuario")
-    private Cliente cliente;
+    @Column(name = "idCiudad")
+    private Long ciudad;
 
-    @ManyToOne
-    @JoinColumn(name = "idPais")
-    private Pais pais;
+    @Column(name = "idProvincia")
+    private Long provincia;
 
-    @ManyToOne
-    @JoinColumn(name = "idCiudad")
-    private Ciudad ciudad;
+    @Transient
+    private UsuarioRolRepository usuarioRolRepository;
 
-    @ManyToOne
-    @JoinColumn(name = "idProvincia")
-    private Provincia provincia;
-
-    /**@JoinTable(
-        name = "usuarios_roles",
-        joinColumns = @JoinColumn(name = "usuario_id"),
-        inverseJoinColumns = @JoinColumn(name = "rol_id")
-    )*/
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<UsuarioRol> roles = new HashSet<>();
+    @Transient
+    private RolRepository rolRepository;
 
     public Usuario() {
     }
 
+
+    public Usuario(String userName, String password, String dni, String nombre, String apellido, String telefono, String direccion, Long pais, Long ciudad, Long provincia) {
+        this.userName = userName;
+        this.password = password;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.pais = pais;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+    }
+
+
     public Usuario(String userName, String password, String dni) {
         this.userName = userName;
         this.password = password;
-        this.DNI = dni;
+        this.dni = dni;
     }
 
 
@@ -115,12 +111,12 @@ public class Usuario implements UserDetails{
         this.password = password;
     }
 
-    public String getDNI() {
-        return this.DNI;
+    public String getDni() {
+        return this.dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -155,87 +151,38 @@ public class Usuario implements UserDetails{
         this.direccion = direccion;
     }
 
-    public Trabajador getTrabajador() {
-        return this.trabajador;
-    }
 
-    public void setTrabajador(Trabajador trabajador) {
-        this.trabajador = trabajador;
-    }
-
-    public Cliente getCliente() {
-        return this.cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Pais getPais() {
+    public Long getPais() {
         return this.pais;
     }
 
-    public void setPais(Pais pais) {
+    public void setPais(Long pais) {
         this.pais = pais;
     }
 
-    public Ciudad getCiudad() {
+    public Long getCiudad() {
         return this.ciudad;
     }
 
-    public void setCiudad(Ciudad ciudad) {
+    public void setCiudad(Long ciudad) {
         this.ciudad = ciudad;
     }
 
-    public Provincia getProvincia() {
+    public Long getProvincia() {
         return this.provincia;
     }
 
-    public void setProvincia(Provincia provincia) {
+    public void setProvincia(Long provincia) {
         this.provincia = provincia;
     }
 
-    public Set<UsuarioRol> getRoles() {
-        return this.roles;
+
+    public void setUsuarioRolRepository(UsuarioRolRepository usuarioRolRepository) {
+        this.usuarioRolRepository = usuarioRolRepository;
     }
 
-    public void setRoles(Set<UsuarioRol> roles) {
-        this.roles = roles;
+    public void setRolRepository(RolRepository rolRepository) {
+        this.rolRepository = rolRepository;
     }
 
-    public void addRol(UsuarioRol rol){
-        this.roles.add(rol);
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-            .map(usuarioRol -> new SimpleGrantedAuthority(usuarioRol.getRol().getNombre()))
-            .collect(Collectors.toList());
-    }
-
-    @Override
-    public String getUsername() {
-        return this.userName;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;        
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;        
-    }
 }

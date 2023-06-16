@@ -1,13 +1,14 @@
 package com.proyectoTFG.PoyectoTFG.services.impl;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyectoTFG.PoyectoTFG.entities.Usuario;
 import com.proyectoTFG.PoyectoTFG.repositories.UsuarioRepository;
+import com.proyectoTFG.PoyectoTFG.repositories.UsuarioRolRepository;
 import com.proyectoTFG.PoyectoTFG.services.UsuarioService;
 
 @Service
@@ -16,6 +17,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private UsuarioRolRepository usuarioRolRepository;
     
     @Override
     //@Transactional
@@ -41,9 +45,26 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 
     @Override
-    //@Transactional
-    public Optional<Usuario> findByUserName(String email) {
-        return usuarioRepository.findByUserName(email);
+    public Usuario findByUserName(String username) {
+        Usuario usuario = usuarioRepository.findByUserName(username);
+        if(usuario == null){
+            return null;
+        }else{
+            return usuario;
+        }
+    }
+
+
+    @Override
+    public boolean hasRole(Long userId, String roleName) {
+        List<Long> roleIdList = usuarioRolRepository.findRoleIdsByIdUsuario(userId);
+        if(roleIdList.isEmpty()){
+            return false;
+        }
+
+        List<String> roleNames = usuarioRolRepository.findRoleNamesByIds(roleIdList);
+
+        return roleNames.contains(roleName);
     }
     
 }
