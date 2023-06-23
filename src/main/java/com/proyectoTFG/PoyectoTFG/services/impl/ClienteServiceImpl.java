@@ -26,6 +26,11 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public Cliente findByIdUsuario(Long id) {
+        return clienteRepository.findByIdUsuario(id);
+    }
+
+    @Override
     public Cliente save(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
@@ -34,5 +39,7 @@ public class ClienteServiceImpl implements ClienteService {
     public void deleteById(Long id) {
         clienteRepository.deleteById(id);
     }
+
+    
     
 }

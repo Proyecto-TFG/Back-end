@@ -43,7 +43,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         Usuario usuario = usuarioService.findById(id);
@@ -70,7 +70,7 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUsuario);
     } */
 
-    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_USER', 'ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario) {
         Usuario existingUsuario = usuarioService.findById(id);
@@ -82,7 +82,7 @@ public class UsuarioController {
         return ResponseEntity.ok(updatedUsuario);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}") 
     public ResponseEntity<Usuario> delete(@PathVariable Long id) {
         Usuario existingUsuario = usuarioService.findById(id);

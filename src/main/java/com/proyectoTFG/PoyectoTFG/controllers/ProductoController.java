@@ -2,8 +2,6 @@ package com.proyectoTFG.PoyectoTFG.controllers;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +23,7 @@ import com.proyectoTFG.PoyectoTFG.services.ProductoService;
 @RequestMapping("/api/productos")
 public class ProductoController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductoController.class);
+    //private static final Logger logger = LoggerFactory.getLogger(ProductoController.class);
 
     @Autowired
     private ProductoService productoService;
@@ -50,13 +48,9 @@ public class ProductoController {
     @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<Producto> save(@RequestBody Producto producto) {
-        
-        logger.debug("Recibiendo solicitud para guardar un producto: {}", producto);
-
+        //logger.debug("Recibiendo solicitud para guardar un producto: {}", producto);
         Producto savedProducto = productoService.save(producto);
-
-        logger.debug("Producto guardado: {}", savedProducto);
-
+        //logger.debug("Producto guardado: {}", savedProducto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProducto);
     }
 

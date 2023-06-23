@@ -22,9 +22,6 @@ public class Trabajador {
     @Column(nullable = false)
     private String tipo;
 
-    // Relación uno a uno con Usuario
-    //@OneToOne(fetch = FetchType.EAGER, optional = false)
-    //@JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @Column(nullable = false)
     private Long idUsuario;
 

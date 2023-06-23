@@ -7,5 +7,7 @@ import com.proyectoTFG.PoyectoTFG.entities.Cliente;
 
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+
+    Cliente findByIdUsuario(Long id);
     
 }

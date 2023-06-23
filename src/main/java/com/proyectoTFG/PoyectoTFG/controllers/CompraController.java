@@ -16,13 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectoTFG.PoyectoTFG.entities.Compra;
+import com.proyectoTFG.PoyectoTFG.entities.Producto;
 import com.proyectoTFG.PoyectoTFG.services.CompraService;
+import com.proyectoTFG.PoyectoTFG.services.ProductoService;
 
 @RestController
 @RequestMapping("/api/compras")
 public class CompraController {
     @Autowired
     private CompraService compraService;
+
+    @Autowired
+    private ProductoService productoService;
 
     @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')")
     @GetMapping
@@ -46,6 +51,11 @@ public class CompraController {
     public ResponseEntity<Compra> save(@RequestBody Compra compra) {
         Double precioTotal = compra.getCantidad() * compra.getPrecioUnidad();
         compra.setTotal(precioTotal);
+        //actualizar el stock del producto
+        Producto producto = productoService.findById(compra.getIdProducto());
+        Integer existencias = producto.getExistencias() + compra.getCantidad();
+        producto.setExistencias(existencias);
+        productoService.save(producto);
         Compra savedCompra = compraService.save(compra);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCompra);
     }
@@ -60,6 +70,11 @@ public class CompraController {
         Double precioTotal = compra.getCantidad() * compra.getPrecioUnidad();
         compra.setTotal(precioTotal);
         compra.setIdCompra(id);
+        //actualizar el stock del producto
+        Producto producto = productoService.findById(compra.getIdProducto());
+        Integer existencias = producto.getExistencias() + compra.getCantidad();
+        producto.setExistencias(existencias);
+        productoService.save(producto);
         Compra updatedCompra = compraService.save(compra);
         return ResponseEntity.ok(updatedCompra);
     }

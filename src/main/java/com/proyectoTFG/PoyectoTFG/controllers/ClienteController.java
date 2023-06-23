@@ -52,6 +52,16 @@ public class ClienteController {
         return ResponseEntity.ok(userClienteDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_USER','ROLE_ADMIN')")
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<Cliente> findByIdUsuario(@PathVariable Long idUsuario) {
+        Cliente cliente = clienteService.findByIdUsuario(idUsuario);
+        if (cliente == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cliente);
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')")
     @PutMapping("/cliente/{idCliente}/usuario/{idUsuario}")
     public ResponseEntity<Cliente> update(@PathVariable Long idCliente, @PathVariable Long idUsuario, @RequestBody UserClienteDTO userClienteDTO) {
