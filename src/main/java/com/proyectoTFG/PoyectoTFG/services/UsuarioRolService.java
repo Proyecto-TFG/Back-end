@@ -11,4 +11,5 @@ public interface UsuarioRolService {
     UsuarioRol save(UsuarioRol usuarioRol);
     void deleteById(Long id);
     void deleteUsuarioRolesByIdUsuario(Long idUsuario);
+    void deleteAllByIdUsuario(Long idUsuario);
 }

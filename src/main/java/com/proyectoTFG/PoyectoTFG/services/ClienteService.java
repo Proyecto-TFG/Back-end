@@ -11,4 +11,5 @@ public interface ClienteService {
     Cliente findByIdUsuario(Long id);
     Cliente save(Cliente cliente);
     void deleteById(Long id);
+    void deleteByIdUsuario(Long id);
 }

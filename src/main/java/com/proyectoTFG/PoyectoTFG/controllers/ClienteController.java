@@ -85,6 +85,8 @@ public class ClienteController {
         if (cliente == null) {
             return ResponseEntity.notFound().build();
         }
+        //eliminar usuario y cliente
+        usuarioService.deleteById(cliente.getIdUsuario());
         clienteService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

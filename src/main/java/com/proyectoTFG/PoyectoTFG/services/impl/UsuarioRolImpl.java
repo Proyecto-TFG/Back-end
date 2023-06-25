@@ -48,6 +48,13 @@ public class UsuarioRolImpl implements UsuarioRolService{
         usuarioRolRepository.deleteAllByIdUsuario(idUsuario);
     }
 
+    @Override
+    @Transactional
+    public void deleteAllByIdUsuario(Long idUsuario) {
+        List<UsuarioRol> usuarioRoles = usuarioRolRepository.findByIdUsuario(idUsuario);
+        usuarioRolRepository.deleteAll(usuarioRoles);
+    }
+
     
 
 }

@@ -17,6 +17,12 @@ public interface UsuarioRolRepository extends JpaRepository<UsuarioRol, Long>{
     @Query("SELECT r.nombre FROM Rol r WHERE r.id IN :roleIds")
     List<String> findRoleNamesByIds(@Param("roleIds") List<Long> roleIds);
 
+    @Query("SELECT ur FROM UsuarioRol ur WHERE ur.idUsuario = :idUsuario")
+    List<UsuarioRol> findAllByIdUsuario(@Param("idUsuario") Long idUsuario);
+
+    @Query("DELETE FROM UsuarioRol ur WHERE ur.idUsuario = :idUsuario")
     void deleteAllByIdUsuario(Long idUsuario);
+
+
     
 }

@@ -2,6 +2,8 @@ package com.proyectoTFG.PoyectoTFG.services.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,13 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void deleteById(Long id) {
         clienteRepository.deleteById(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteByIdUsuario(Long id) {
+        
+        clienteRepository.deleteByIdUsuario(id);
     }
 
     

@@ -21,6 +21,7 @@ import com.proyectoTFG.PoyectoTFG.entities.TrabajadorRol;
 import com.proyectoTFG.PoyectoTFG.entities.UserTrabajadorDTO;
 import com.proyectoTFG.PoyectoTFG.entities.Usuario;
 import com.proyectoTFG.PoyectoTFG.entities.UsuarioRol;
+import com.proyectoTFG.PoyectoTFG.services.ClienteService;
 import com.proyectoTFG.PoyectoTFG.services.RolService;
 import com.proyectoTFG.PoyectoTFG.services.TrabajadorService;
 import com.proyectoTFG.PoyectoTFG.services.UsuarioRolService;
@@ -42,6 +43,9 @@ public class TrabajadorController {
 
     @Autowired
     private RolService rolService;
+
+    @Autowired 
+    private ClienteService clienteService;
 
     
     @GetMapping
@@ -95,6 +99,9 @@ public class TrabajadorController {
         Usuario usuario = usuarioService.findById(trabajadorRol.getTrabajador().getIdUsuario());
         List<Long> roles = trabajadorRol.getRoles();
 
+        //eliminar roles previamente
+        usuarioRolService.deleteAllByIdUsuario(usuario.getId());
+
         //guardar roles
         roles.forEach(rolId -> {
             UsuarioRol usuarioRol = new UsuarioRol();
@@ -102,6 +109,9 @@ public class TrabajadorController {
             usuarioRol.setUsuario(usuario.getId());
             this.usuarioRolService.save(usuarioRol);
         });
+
+        //eliminar cliente
+        clienteService.deleteByIdUsuario(usuario.getId());
 
         Trabajador savedTrabajador = trabajadorService.save(trabajador);
         
@@ -117,38 +127,18 @@ public class TrabajadorController {
         Usuario usuario = userTrabajador.getUsuario();
         List<Long> listRolesTrabajador = userTrabajador.getRoles();
 
-        List<Long> listaRolesExistentes = new ArrayList<>();
 
-        //obtener roles
-        this.rolService.findAll().forEach(rol ->{
-            listaRolesExistentes.add(rol.getId());
-        });
-
+       
         //borrar roles antiguos
-        usuarioRolService.deleteUsuarioRolesByIdUsuario(idUsuario);
+        usuarioRolService.deleteAllByIdUsuario(idUsuario);
 
-        //lista de roles nuevos
-        List<Long> rolesAgregados = new ArrayList<>();
-
-
-        //roles nuevos
-        for(Long role : listaRolesExistentes ){
-            if(!listRolesTrabajador.contains(role)){
-                rolesAgregados.add(role);
-            }
-        }
-
-        //agregar nuevos roles al trabajador
-        for(Long nuevosRoles: rolesAgregados){
+        //guardar roles
+        listRolesTrabajador.forEach(rolId -> {
             UsuarioRol usuarioRol = new UsuarioRol();
-            usuarioRol.setUsuario(idUsuario);
-            usuarioRol.setRol(nuevosRoles);
-            usuarioRolService.save(usuarioRol);
-        }
-
-        
-
-        
+            usuarioRol.setRol(rolId);
+            usuarioRol.setUsuario(usuario.getId());
+            this.usuarioRolService.save(usuarioRol);
+        });    
 
         //actualizar usuario y trabajador
         usuario.setId(idUsuario);
